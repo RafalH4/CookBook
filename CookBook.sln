@@ -3,9 +3,38 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F4D4B95F-FF1E-43A5-8463-711086B59032}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{EAE372EA-172E-46E8-B0B2-E29EFD09D145}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{752565E1-3FE2-4921-93B1-D7ED21BC3951}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{733EC576-08C9-4BCF-A50E-DABFFF3C37DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{DA537921-DD15-4E36-A693-D4008B5D274A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Domain", "CookBook.Domain\CookBook.Domain.csproj", "{089F645F-069B-4C08-84CA-17BE33F6067F}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{089F645F-069B-4C08-84CA-17BE33F6067F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{089F645F-069B-4C08-84CA-17BE33F6067F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{089F645F-069B-4C08-84CA-17BE33F6067F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{089F645F-069B-4C08-84CA-17BE33F6067F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EAE372EA-172E-46E8-B0B2-E29EFD09D145} = {F4D4B95F-FF1E-43A5-8463-711086B59032}
+		{752565E1-3FE2-4921-93B1-D7ED21BC3951} = {F4D4B95F-FF1E-43A5-8463-711086B59032}
+		{733EC576-08C9-4BCF-A50E-DABFFF3C37DE} = {F4D4B95F-FF1E-43A5-8463-711086B59032}
+		{DA537921-DD15-4E36-A693-D4008B5D274A} = {F4D4B95F-FF1E-43A5-8463-711086B59032}
+		{089F645F-069B-4C08-84CA-17BE33F6067F} = {752565E1-3FE2-4921-93B1-D7ED21BC3951}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {219630F2-A622-4AFA-91CF-1B5285A44FEE}
