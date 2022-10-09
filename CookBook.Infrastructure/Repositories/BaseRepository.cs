@@ -1,4 +1,5 @@
 ﻿using CookBook.Interfaces.IRepositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,11 @@ namespace CookBook.Infrastructure.Repositories
     public abstract class BaseRepository<T> : IRepository<T> where T : class
     {
         private readonly DataContext _data;
+        private DbSet<T> _entity;
         public BaseRepository(DataContext data)
         {
             _data = data;
+            _entity = _data.Set<T>();
         }
         public Task Add(T entity)
         {
@@ -22,21 +25,23 @@ namespace CookBook.Infrastructure.Repositories
 
         public async Task<T> Get(Guid id)
         {
-            return await _data.Set<T>().FindAsync(id);
+            return await _entity.FindAsync(id);
         }
-        public Task<IEnumerable<T>> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
-            throw new NotImplementedException();
-        }
-
-        public Task Remove(T entity)
-        {
-            throw new NotImplementedException();
+            return await _entity
+                .AsNoTracking()
+                .ToListAsync();
         }
 
-        public Task Update(T entity)
+        public async Task Remove(T entity)
         {
-            throw new NotImplementedException();
+            _entity.Remove(entity);
+        }
+
+        public async Task Update(T entity)
+        {
+            _entity.Update(entity);
         }
     }
 }
