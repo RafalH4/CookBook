@@ -2,7 +2,7 @@
 
 namespace CookBook.Domain.Entities
 {
-    public class Product : BaseEntity
+    public abstract class Product : BaseEntity
     {
         public string Name { get; set; }
         public double Energy { get; set; }
@@ -13,8 +13,12 @@ namespace CookBook.Domain.Entities
         public double SugarsInCarbohydrates { get; set; }
         public double Protein { get; set; }
         public int Salt { get; set; }
+        public User User { get; set; }
+        public Guid UserId { get; set; }
+
+
         public string Description { get; set; }
-        public User CreatedBy { get; set; }
         public ICollection<Ingredient> AsIngredient { get; set; }
+
     }
 }

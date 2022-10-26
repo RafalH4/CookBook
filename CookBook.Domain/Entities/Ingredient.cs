@@ -10,7 +10,9 @@ namespace CookBook.Domain.Entities
     public class Ingredient : BaseEntity
     {
         public Product Product { get; set; }
+        public Guid ProductId { get; set; }
         public Dish Dish { get; set; }
+        public Guid DishId { get; set; }
         public string Description { get; set; }
         public double Scale { get; set; }
     }

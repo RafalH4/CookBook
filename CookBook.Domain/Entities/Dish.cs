@@ -8,6 +8,7 @@ namespace CookBook.Domain.Entities
 {
     public class Dish : Product
     {
-        public ICollection<Ingredient> Ingredient { get; set; }
+        public ICollection<Ingredient> Ingredients { get; set; }
+        public string Description { get; set; }
     }
 }

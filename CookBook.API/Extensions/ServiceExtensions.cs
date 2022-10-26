@@ -1,5 +1,7 @@
-﻿using CookBook.Infrastructure.Repositories;
+﻿using CookBook.Infrastructure;
+using CookBook.Infrastructure.Repositories;
 using CookBook.Interfaces.IRepositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace CookBook.API.Extensions
 {
@@ -11,6 +13,13 @@ namespace CookBook.API.Extensions
             service.AddScoped<IDishRepository, DishRepository>();
             service.AddScoped<IMainProductRepository, MainProductRepository>();
             service.AddScoped<IUserRepository, UserRepository>();
+        }
+
+        public static void ConfigureDbConnection(this IServiceCollection service, IConfiguration config)
+        {
+            var connectionString = config["dbConnection:connectionString"];
+            service.AddDbContext<DataContext>(opt => 
+                opt.UseSqlServer(connectionString, b => b.MigrationsAssembly("CookBook.Infrastructure")));
         }
     }
 }
