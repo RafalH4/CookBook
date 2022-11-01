@@ -14,31 +14,34 @@ namespace CookBook.Infrastructure
         {
 
         }
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<UserRole>()
-        //        .HasOne(x => x.User)
-        //        .WithMany(x => x.Roles)
-        //        .HasForeignKey(x => x.UserId);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<UserRole>()
+                .HasOne(x => x.User)
+                .WithMany(x => x.Roles)
+                .HasForeignKey(x => x.UserId);
 
-        //    modelBuilder.Entity<UserRole>()
-        //        .HasOne(x => x.Role)
-        //        .WithMany(x => x.UserRoles)
-        //        .HasForeignKey(x => x.RoleId);
+            modelBuilder.Entity<UserRole>()
+                .HasOne(x => x.Role)
+                .WithMany(x => x.UserRoles)
+                .HasForeignKey(x => x.RoleId);
 
-        //    modelBuilder.Entity<Ingredient>()
-        //        .HasOne(x => x.Product)
-        //        .WithMany(x => x.AsIngredient)
-        //        .HasForeignKey(x => x.ProductId);
+            modelBuilder.Entity<Ingredient>()
+                .HasOne(x => x.Product)
+                .WithMany(x => x.AsIngredient)
+                .HasForeignKey(x => x.ProductId)
+                .OnDelete(DeleteBehavior.ClientCascade);
 
-        //    modelBuilder.Entity<Ingredient>()
-        //        .HasOne<Dish>(x => x.Dish)
-        //        .WithMany(x => x.Ingredients)
-        //        .HasForeignKey(x => x.)
-        //}
+            modelBuilder.Entity<Ingredient>()
+                .HasOne(x => x.Dish)
+                .WithMany(x => x.Ingredients)
+                .HasForeignKey(x => x.DishId)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
 
-        //public DbSet<Dish> Dishes { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<MainProduct> MainProducts { get; set; }
+        public DbSet<Dish> Dishes { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
     }
