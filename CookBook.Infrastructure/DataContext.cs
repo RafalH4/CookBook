@@ -30,13 +30,13 @@ namespace CookBook.Infrastructure
                 .HasOne(x => x.Product)
                 .WithMany(x => x.AsIngredient)
                 .HasForeignKey(x => x.ProductId)
-                .OnDelete(DeleteBehavior.ClientCascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Ingredient>()
                 .HasOne(x => x.Dish)
                 .WithMany(x => x.Ingredients)
                 .HasForeignKey(x => x.DishId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
         }
 
         public DbSet<Product> Products { get; set; }
