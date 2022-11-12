@@ -1,4 +1,6 @@
 ﻿using CookBook.Interfaces.IRepositories;
+using CookBook.Models;
+using CookBook.Models.DTO.Product;
 using CookBook.Services.IServices;
 using System;
 using System.Collections.Generic;
@@ -13,5 +15,9 @@ namespace CookBook.Services.Services
         private readonly IUnitOfWork _repository;
         public MainProductService(IUnitOfWork repository) => _repository = repository;
 
+        public Task<IResult> AddProductAsync(NewProductModel model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

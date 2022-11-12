@@ -1,4 +1,6 @@
 ﻿using CookBook.Interfaces.IRepositories;
+using CookBook.Models;
+using CookBook.Models.DTO.Product;
 using CookBook.Services.IServices;
 using System;
 using System.Collections.Generic;
@@ -12,5 +14,6 @@ namespace CookBook.Services.Services
     {
         private readonly IUnitOfWork _repository;
         public UserService(IUnitOfWork repository) => _repository = repository;
+
     }
 }

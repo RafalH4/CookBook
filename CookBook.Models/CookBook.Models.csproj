@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CookBook.Interfaces\CookBook.Interfaces.csproj" />
-    <ProjectReference Include="..\CookBook.Models\CookBook.Models.csproj" />
-  </ItemGroup>
-
 </Project>

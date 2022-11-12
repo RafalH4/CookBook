@@ -1,4 +1,6 @@
 ﻿
+using CookBook.Models;
+using CookBook.Models.DTO.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,8 @@ using System.Threading.Tasks;
 
 namespace CookBook.Services.IServices
 {
-    internal interface IUserService
+    public interface IUserService
     {
+        
     }
 }
