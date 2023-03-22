@@ -13,8 +13,8 @@ namespace CookBook.Domain.Entities
         public double SugarsInCarbohydrates { get; set; }
         public double Protein { get; set; }
         public int Salt { get; set; }
-        public User User { get; set; }
-        public Guid UserId { get; set; }
+        public User? User { get; set; }
+        public Guid? UserId { get; set; }
 
 
         public string Description { get; set; }

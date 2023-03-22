@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CookBook.Services.IServices
 {
-    internal interface IDishService
+    public interface IDishService
     {
     }
 }

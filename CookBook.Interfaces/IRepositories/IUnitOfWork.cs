@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CookBook.Interfaces.IRepositories
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
         IDishRepository Dishes { get; }
         IMainProductRepository MainProducts { get; }

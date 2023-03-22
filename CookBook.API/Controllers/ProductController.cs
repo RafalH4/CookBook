@@ -1,11 +1,10 @@
 ﻿using CookBook.Models.DTO.Product;
 using CookBook.Services.IServices;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CookBook.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -15,9 +14,30 @@ namespace CookBook.API.Controllers
             _service = service;
         }
         [HttpPost]
-        public async Task AddProduct(NewProductModel model)
+        public async Task<IActionResult> AddMainProduct([FromBody] NewProductModel model)
         {
-            var result = await _service.AddProductAsync(model);
+            var product = await _service.AddProductAsync(model);
+            if (product.Success)
+            {
+                return Ok(product.Messages);
+            }
+            else
+            {
+                return BadRequest(product.Messages);
+            }
         }
+        [HttpGet]
+        public async Task<IActionResult> Products()
+        {
+            var products = await _service.AllProducts();
+            return Ok(products.Data);
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetProduct(Guid id)
+        {
+            var product = await _service.GetProduct(id);
+            return Ok(product);
+        }
+
     }
 }

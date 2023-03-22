@@ -9,15 +9,28 @@ namespace CookBook.Infrastructure.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        public IDishRepository Dishes => throw new NotImplementedException();
+        private readonly DataContext _dataContext;
+        public IDishRepository Dishes { get; }
 
-        public IMainProductRepository MainProducts => throw new NotImplementedException();
+        public IMainProductRepository MainProducts { get; }
 
-        public IUserRepository Users => throw new NotImplementedException();
-
-        public Task SaveAsync()
+        public IUserRepository Users { get; }
+        public UnitOfWork(DataContext dataContext, IDishRepository dishes, IMainProductRepository mainProducts, IUserRepository users)
         {
-            throw new NotImplementedException();
+            _dataContext = dataContext;
+            Dishes = dishes;
+            MainProducts = mainProducts;
+            Users = users;
+        }
+
+        public void Dispose()
+        {
+            _dataContext.Dispose();
+        }
+
+        public async Task SaveAsync()
+        {
+            await _dataContext.SaveChangesAsync();
         }
     }
 }

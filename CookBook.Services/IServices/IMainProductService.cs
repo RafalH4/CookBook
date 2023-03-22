@@ -1,4 +1,5 @@
-﻿using CookBook.Models;
+﻿using CookBook.Domain.Entities;
+using CookBook.Models;
 using CookBook.Models.DTO.Product;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ namespace CookBook.Services.IServices
 {
     public interface IMainProductService
     {
-        Task<IResult> AddProductAsync(NewProductModel model);
+        Task<Result> AddProductAsync(NewProductModel model);
+        Task<Result<NewProductModel>> GetProduct(Guid id);
+        Task<Result<IEnumerable<MainProduct>>> AllProducts();
     }
 }
