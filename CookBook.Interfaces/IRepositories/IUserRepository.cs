@@ -9,5 +9,6 @@ namespace CookBook.Interfaces.IRepositories
 {
     public interface IUserRepository : IRepository<User>
     {
+        Task<User> Get(string login);
     }
 }

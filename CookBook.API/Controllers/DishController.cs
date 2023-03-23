@@ -1,6 +1,8 @@
 ﻿using CookBook.Services.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace CookBook.API.Controllers
 {
@@ -13,10 +15,12 @@ namespace CookBook.API.Controllers
         {
             _service = service;
         }
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> CreateDish()
         {
             return Ok("abc");
+
         }
     }
 }
