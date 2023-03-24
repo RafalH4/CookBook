@@ -2,7 +2,7 @@
 
 namespace CookBook.Domain.Entities
 {
-    public abstract class Product : BaseEntity
+    public abstract class Product : CreatedByUserEntity
     {
         public string Name { get; set; }
         public double Energy { get; set; }

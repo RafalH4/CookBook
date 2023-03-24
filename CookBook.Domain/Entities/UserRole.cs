@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CookBook.Domain.Entities
 {
-    public class UserRole : BaseEntity
+    public class UserRole : CreatedByUserEntity
     {
         public User User { get; set; }
         public Guid UserId { get; set; }
