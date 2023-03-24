@@ -14,6 +14,7 @@ namespace CookBook.API.Controllers
         {
             _service = service;
         }
+        [HttpPost("login")]
         public async Task<IActionResult> Login (UserLogin model)
         {
             var result = await _service.Authenticate(model);
