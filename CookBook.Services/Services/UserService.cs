@@ -44,6 +44,7 @@ namespace CookBook.Services.Services
             try
             {
                 await _repository.Users.Add(user);
+                //TO DO przypisanie użytkownika do roli
                 await _repository.SaveAsync();
                 listOfMessages.Add("Poprawnie utworzono konto użytkownika");
                 return new Result()

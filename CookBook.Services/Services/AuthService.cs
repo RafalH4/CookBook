@@ -32,15 +32,15 @@ namespace CookBook.Services.Services
             }
             if(!AuthHelper.CheckPassword(user, userLogin.Password))
             {
-                returnMessages.Add("Błędny login i\\lub hasło");
+                returnMessages.Add(@"Błędny login i\lub hasło");
                 return new Result<string>()
                 {
                     Success = false,
                     Messages = returnMessages,
                 };
             }
-            //generate token
-            var token = "example token";
+            //TO DO Przypisywanie poprawnej roli
+            var token = AuthHelper.GenerateToken(user, "user", _config);
             returnMessages.Add($"Poprawnie wygenerowano token dla użytkownika o adresie email {user.Email}");
             
             return new Result<string>()
