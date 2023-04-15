@@ -15,7 +15,7 @@ namespace CookBook.API.Controllers
         {
             _service = service;
         }
-        [Authorize]
+        [Authorize(Roles ="Admin")]
         [HttpGet]
         public async Task<IActionResult> CreateDish()
         {

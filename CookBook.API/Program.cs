@@ -1,4 +1,5 @@
 using CookBook.API.Extensions;
+using CookBook.API.Helpers;
 using CookBook.Infrastructure.Repositories;
 using CookBook.Interfaces.IRepositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -55,6 +56,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseMiddleware<JwtMiddleware>();
 app.UseAuthentication();
 app.UseAuthorization();
 

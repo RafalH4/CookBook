@@ -52,5 +52,22 @@ namespace CookBook.Services.Helpers
             var securityToken = tokenHandler.CreateToken(securityTokenDescription);
             return tokenHandler.WriteToken(securityToken);
         }
+        public static JwtSecurityToken ValidateToken(string token, IConfiguration config)
+        {
+            //TO DO
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var keyToCredentials = config["AppSettings:SecurityKey"];
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(keyToCredentials));
+            var validationParams = new TokenValidationParameters()
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = securityKey,
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ClockSkew = TimeSpan.Zero,
+            };
+            tokenHandler.ValidateToken(token, validationParams, out SecurityToken validatedToken);
+            return (JwtSecurityToken)validatedToken;
+        }
     }
 }
